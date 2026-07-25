@@ -1,0 +1,8 @@
+.fadeToBlack {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: #000000;
+  opacity: 0;
+  pointer-events: none;
+}

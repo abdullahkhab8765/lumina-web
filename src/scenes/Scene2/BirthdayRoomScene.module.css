@@ -1,0 +1,64 @@
+.sceneRoot {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: #0a0705;
+  isolation: isolate;
+  will-change: opacity;
+}
+
+.sceneRoot > * {
+  position: absolute;
+  inset: 0;
+}
+
+/* Layering */
+.sceneRoot > *:nth-child(1) {
+  z-index: 1; /* RoomBackground */
+}
+
+.sceneRoot > *:nth-child(2) {
+  z-index: 2; /* FloatingParticles */
+  pointer-events: none;
+}
+
+.sceneRoot > *:nth-child(3) {
+  z-index: 3; /* BirthdayCake */
+  pointer-events: none;
+}
+
+.sceneRoot > *:nth-child(4) {
+  z-index: 4; /* AmbientGlow */
+  pointer-events: none;
+}
+
+.continueWrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .continueWrapper {
+    bottom: 10%;
+  }
+}
+
+@media (max-width: 640px) {
+  .continueWrapper {
+    bottom: 12%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sceneRoot {
+    will-change: auto;
+  }
+}

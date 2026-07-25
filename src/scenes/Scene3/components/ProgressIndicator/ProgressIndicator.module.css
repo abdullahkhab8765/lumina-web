@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  transition: background 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.dot[data-status='active'] {
+  background: rgba(255, 210, 140, 0.9);
+  box-shadow: 0 0 10px rgba(255, 200, 120, 0.6);
+  transform: scale(1.2);
+}
+
+.dot[data-status='opened'] {
+  background: rgba(255, 210, 140, 0.55);
+}

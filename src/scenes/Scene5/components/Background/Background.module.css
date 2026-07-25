@@ -1,0 +1,37 @@
+.nightGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 20%, #0e1830 0%, #070b18 45%, #02040a 100%);
+}
+
+.starsField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff6de;
+  opacity: 0.85;
+  box-shadow: 0 0 4px rgba(255, 246, 222, 0.6);
+  will-change: opacity;
+}
+
+.cloudsField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud {
+  position: absolute;
+  height: 16vh;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(120, 130, 160, 0.22) 0%, rgba(120, 130, 160, 0.06) 55%, rgba(120, 130, 160, 0) 80%);
+  filter: blur(6px);
+  will-change: transform;
+}

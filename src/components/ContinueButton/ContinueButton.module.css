@@ -1,0 +1,74 @@
+.button {
+  position: fixed;
+  left: 50%;
+  bottom: 70px;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  padding: 0.85rem 2.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 210, 130, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 0 18px rgba(255, 190, 90, 0.35), inset 0 0 12px rgba(255, 210, 140, 0.08);
+  color: #ffe9b0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Gentle idle float once revealed. Runs independently of the GSAP entrance
+   tween (which only sets the initial opacity/y/scale), so it picks up
+   naturally once the button settles into place. */
+.button {
+  animation: continueFloat 3.4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes continueFloat {
+  0%,
+  100% {
+    transform: translate(-50%, 0px);
+  }
+  50% {
+    transform: translate(-50%, -6px);
+  }
+}
+
+.button:hover {
+  transform: translate(-50%, -3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 220, 150, 0.75);
+  box-shadow: 0 0 30px rgba(255, 200, 110, 0.6), inset 0 0 16px rgba(255, 220, 150, 0.15);
+  animation-play-state: paused;
+}
+
+.button:active {
+  transform: translate(-50%, 0px) scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 2px solid rgba(255, 216, 102, 0.8);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .button {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    animation: none !important;
+    transition: none !important;
+  }
+}

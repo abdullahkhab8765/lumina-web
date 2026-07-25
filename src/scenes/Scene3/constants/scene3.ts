@@ -1,0 +1,29 @@
+export const GIFT_COUNT = 5;
+
+export const SCENE3_FADE_IN_DURATION = 1.4;
+export const SCENE3_EXIT_DURATION = 0.9;
+
+export const GIFT_GRID_STAGGER = 0.12;
+export const GIFT_ENTRANCE_DURATION = 0.9;
+
+export const GIFT_HOVER_LIFT = -8;
+export const GIFT_HOVER_DURATION = 0.35;
+
+export const GIFT_OPEN_LID_ROTATION = -115;
+export const GIFT_OPEN_LID_DURATION = 0.7;
+export const GIFT_OPEN_RIBBON_DURATION = 0.5;
+export const GIFT_OPEN_GLOW_DURATION = 0.9;
+export const GIFT_OPEN_DISSOLVE_DURATION = 0.6;
+export const GIFT_OPEN_PARTICLE_COUNT = 18;
+
+export const MESSAGE_CARD_ENTER_DURATION = 0.9;
+export const MESSAGE_CARD_EXIT_DURATION = 0.6;
+
+export const GIFT_UNLOCK_PULSE_DURATION = 1.6;
+export const GIFT_UNLOCK_SPARKLE_COUNT = 10;
+
+export const CONTINUE_SECTION_DELAY = 0.6;
+export const CONTINUE_SECTION_ENTER_DURATION = 1;
+
+export const BACKGROUND_GLOW_DURATION = 18;
+export const BACKGROUND_PARTICLE_COUNT = 26;

@@ -1,0 +1,16 @@
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #0b1120 0%, #050810 55%, #010103 100%);
+}
+
+.glow {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 60vmax;
+  height: 60vmax;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 205, 140, 0.08) 0%, rgba(255, 205, 140, 0) 70%);
+}

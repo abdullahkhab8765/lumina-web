@@ -1,0 +1,39 @@
+.glowRoot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+
+.glowCenter {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(255, 196, 120, 0.35) 0%,
+    rgba(255, 196, 120, 0.12) 35%,
+    rgba(255, 196, 120, 0) 65%
+  );
+}
+
+.glowEdge {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(10, 6, 4, 0.55) 100%
+  );
+}
+
+@media (max-width: 640px) {
+  .glowCenter {
+    background: radial-gradient(
+      circle at 50% 40%,
+      rgba(255, 196, 120, 0.3) 0%,
+      rgba(255, 196, 120, 0.1) 40%,
+      rgba(255, 196, 120, 0) 70%
+    );
+  }
+}

@@ -1,0 +1,33 @@
+/* ==========================================================================
+   CinematicText — single line of intro copy over the black screen
+   ========================================================================== */
+
+.text {
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: var(--font-body, "Inter", ui-sans-serif, system-ui, sans-serif);
+
+  /* elegant, generous tracking for a luxury invitation feel */
+  letter-spacing: 0.4em;
+  font-size: clamp(0.7rem, 2vw, 0.95rem);
+
+  /* accessibility-friendly warm off-white, well above 4.5:1 on black */
+  color: rgba(255, 226, 179, 0.88);
+
+  text-shadow: 0 0 18px rgba(255, 205, 140, 0.35);
+
+  /* keeps long copy from wrapping awkwardly on narrow screens */
+  max-width: 90vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .text {
+    letter-spacing: 0.28em;
+    font-size: 0.68rem;
+  }
+}

@@ -1,0 +1,19 @@
+.particleField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 214, 165, 0.9) 0%,
+    rgba(255, 214, 165, 0.15) 70%,
+    rgba(255, 214, 165, 0) 100%
+  );
+  filter: blur(0.5px);
+  will-change: transform, opacity;
+  pointer-events: none;
+}

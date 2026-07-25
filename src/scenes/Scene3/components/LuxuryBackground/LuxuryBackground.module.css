@@ -1,0 +1,58 @@
+.backgroundRoot {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.baseGradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #241a12 0%, #120c08 55%, #060402 100%);
+}
+
+.centerGlow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 196, 120, 0.22) 0%,
+    rgba(255, 196, 120, 0.05) 45%,
+    rgba(255, 196, 120, 0) 70%
+  );
+  will-change: transform;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 50%, rgba(4, 2, 1, 0.65) 100%);
+}
+
+.particleField {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 214, 165, 0.85) 0%,
+    rgba(255, 214, 165, 0.1) 70%,
+    rgba(255, 214, 165, 0) 100%
+  );
+  will-change: transform, opacity;
+}
+
+@media (max-width: 640px) {
+  .centerGlow {
+    width: 90vmax;
+    height: 90vmax;
+  }
+}

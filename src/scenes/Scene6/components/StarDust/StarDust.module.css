@@ -1,0 +1,14 @@
+.field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dust {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff6de;
+  opacity: 0.8;
+  box-shadow: 0 0 4px rgba(255, 246, 222, 0.5);
+}

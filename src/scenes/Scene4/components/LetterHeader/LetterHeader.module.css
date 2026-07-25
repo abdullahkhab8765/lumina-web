@@ -1,0 +1,16 @@
+.heading {
+  margin: 0;
+  opacity: 0;
+  color: #3a2a14;
+  font-size: clamp(1.15rem, 2.6vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .heading {
+    font-size: 1.05rem;
+  }
+}

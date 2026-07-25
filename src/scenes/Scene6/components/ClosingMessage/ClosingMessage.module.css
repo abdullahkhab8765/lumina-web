@@ -1,0 +1,35 @@
+.wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 35;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  padding: 0 1.5rem;
+}
+
+.title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  color: transparent;
+  background-image: linear-gradient(180deg, #fffdf3 0%, #ffe9a8 30%, #ffcf5e 60%, #d99a2b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 24px rgba(255, 220, 140, 0.45));
+}
+
+.subtitle {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  letter-spacing: 0.02em;
+  color: rgba(255, 245, 225, 0.8);
+}

@@ -1,0 +1,101 @@
+.giftRoot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  position: relative;
+  width: clamp(84px, 11vw, 128px);
+  height: clamp(84px, 11vw, 128px);
+  cursor: pointer;
+  perspective: 600px;
+}
+
+.box[aria-disabled='true'] {
+  cursor: default;
+}
+
+.boxBody {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #3a2414 0%, #211307 100%);
+  border: 1px solid rgba(255, 205, 140, 0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxNumber {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: rgba(255, 224, 178, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.lid {
+  position: absolute;
+  left: -6%;
+  top: -18%;
+  width: 112%;
+  height: 38%;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #4a2e18 0%, #2a1809 100%);
+  border: 1px solid rgba(255, 205, 140, 0.4);
+  transform-origin: top center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.ribbon {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 16%;
+  height: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #e8b25a 0%, #c98a2e 100%);
+  transform-origin: top center;
+}
+
+.glow {
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 210, 140, 0.55) 0%, rgba(255, 210, 140, 0) 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe6ba 0%, rgba(255, 230, 186, 0) 70%);
+  opacity: 0;
+}
+
+.lockOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(4, 2, 1, 0.55);
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+}
+
+@media (max-width: 640px) {
+  .box {
+    width: clamp(64px, 16vw, 92px);
+    height: clamp(64px, 16vw, 92px);
+  }
+}

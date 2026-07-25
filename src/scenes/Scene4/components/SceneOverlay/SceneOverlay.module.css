@@ -1,0 +1,14 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(2, 1, 1, 0.55) 100%);
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 45%, rgba(2, 1, 1, 0.6) 100%);
+  }
+}
