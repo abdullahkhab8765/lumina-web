@@ -16,3 +16,21 @@
   user-select: none;
   pointer-events: none;
 }
+
+@media (max-width: 480px) {
+  .roomWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0a0705;
+  }
+
+  .roomImage {
+    position: static;
+    inset: auto;
+    width: auto;
+    height: 60%;
+    aspect-ratio: 3 / 2;
+    max-width: none;
+  }
+}
