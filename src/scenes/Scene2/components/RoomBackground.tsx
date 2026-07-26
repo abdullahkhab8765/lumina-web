@@ -13,29 +13,46 @@ const RoomBackground: React.FC = () => {
     const el = imgRef.current;
     if (!el) return;
 
-    gsap.set(el, {
-      scale: 1.05,
-      xPercent: 0,
-      yPercent: 0,
-      transformOrigin: '50% 45%',
-      force3D: true,
-    });
+    const mm = gsap.matchMedia();
 
-    const tween = gsap.to(el, {
-      scale: 1.16,
-      xPercent: -2.5,
-      yPercent: -1.5,
-      duration: 26,
-      ease: 'sine.inOut',
-      repeat: -1,
-      yoyo: true,
-    });
+    mm.add(
+      {
+        isMobile: '(max-width: 480px)',
+        isDesktop: '(min-width: 481px)',
+      },
+      (context) => {
+        const { isMobile } = context.conditions as { isMobile: boolean };
 
-    tweenRef.current = tween;
+        // Desktop values are byte-identical to the original implementation.
+        gsap.set(el, {
+          scale: isMobile ? 1.0 : 1.05,
+          xPercent: 0,
+          yPercent: 0,
+          transformOrigin: '50% 45%',
+          force3D: true,
+        });
+
+        const tween = gsap.to(el, {
+          scale: isMobile ? 1.04 : 1.16,
+          xPercent: isMobile ? -1 : -2.5,
+          yPercent: isMobile ? -0.5 : -1.5,
+          duration: 26,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true,
+        });
+
+        tweenRef.current = tween;
+
+        return () => {
+          tween.kill();
+          tweenRef.current = null;
+        };
+      }
+    );
 
     return () => {
-      tween.kill();
-      tweenRef.current = null;
+      mm.revert();
     };
   }, []);
 
