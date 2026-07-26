@@ -2,6 +2,7 @@
   position: fixed;
   left: 50%;
   bottom: 70px;
+  bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   transform: translate(-50%, 0);
   opacity: 0;
   pointer-events: none;

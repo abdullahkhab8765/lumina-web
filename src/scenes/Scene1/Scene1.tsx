@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { createScene1Timeline, Scene1TimelineTargets } from "@/components/animations/scene1Timeline";
 import CinematicText from "@/components/CinematicText/CinematicText";
-import LoadingBar from "@/components/LoadingBar/LoadingBar";
+import LoadingBar, { LoadingBarHandle } from "@/components/LoadingBar/LoadingBar";
 import Countdown, { CountdownHandle } from "@/components/Countdown/Countdown";
 import BirthdayTitle from "@/components/BirthdayTitle/BirthdayTitle";
 import Fireworks, { FireworksHandle } from "@/components/Fireworks/Fireworks";
@@ -51,7 +51,7 @@ function buildFloatingParticles(): FloatingParticle[] {
 export default function Scene1() {
   const blackScreenRef = useRef<HTMLDivElement | null>(null);
   const cinematicTextRef = useRef<HTMLParagraphElement | null>(null);
-  const loadingBarRef = useRef<HTMLDivElement | null>(null);
+  const loadingBarRef = useRef<LoadingBarHandle | null>(null);
   const countdownRef = useRef<CountdownHandle | null>(null);
   const flashRef = useRef<FlashTransitionHandle | null>(null);
   const fireworksRef = useRef<FireworksHandle | null>(null);
@@ -85,7 +85,8 @@ export default function Scene1() {
       const targets: Scene1TimelineTargets = {
         blackScreen: blackScreenRef.current,
         cinematicText: cinematicTextRef.current,
-        loadingBar: loadingBarRef.current,
+        loadingBar: loadingBarRef.current?.fill ?? null,
+        loadingBarTrack: loadingBarRef.current?.track ?? null,
         countdownNumber: countdownRef.current?.element ?? null,
         flash: flashRef.current?.element ?? null,
         fireworksLayer: fireworksRef.current?.element ?? null,

@@ -9,17 +9,6 @@ export class AudioController {
   private unlockHandler: (() => void) | null = null;
   private destroyed = false;
   private mutedVolume: number | null = null;
-  // Bumped by stop()/fadeOut()/destroy() to invalidate any play()
-  // promise or armUnlockListener retry that was already in flight
-  // when teardown began. Without this, a play() call started just
-  // before fadeOut() (e.g. from React 18/19 StrictMode's dev-only
-  // double-invoke of the mount effect, which runs the effect,
-  // its cleanup, and the effect again in the same tick) can resolve
-  // *after* fadeOut() has started, its stale .then() calling
-  // fadeIn() and reviving an orphaned, looping audio element that
-  // nothing will ever stop again -- audibly overlapping whatever
-  // plays next.
-  private generation = 0;
 
   constructor(config: Scene4AudioConfig) {
     this.config = config;
@@ -71,12 +60,11 @@ export class AudioController {
     }
 
     console.log('[AudioController] play() calling audio.play()');
-    const generation = this.generation;
     audio.play().then(() => {
       console.log('[AudioController] play() RESOLVED -- audio.paused =', audio.paused);
     }).catch((err) => {
       console.warn(`[AudioController] play() REJECTED for "${this.config.src}":`, err);
-      if (this.destroyed || generation !== this.generation) return;
+      if (this.destroyed) return;
       this.armUnlockListener(() => this.play());
     });
   }
@@ -95,20 +83,16 @@ export class AudioController {
     }
 
     console.log('[AudioController] playAndFadeIn() calling audio.play()');
-    const generation = this.generation;
     audio
       .play()
       .then(() => {
         console.log('[AudioController] playAndFadeIn() play() RESOLVED, destroyed =', this.destroyed);
-        if (this.destroyed || generation !== this.generation) {
-          console.log('[AudioController] playAndFadeIn() play() RESOLVED but this controller was stopped/faded-out in the meantime -- ignoring stale resolution');
-          return;
-        }
+        if (this.destroyed) return;
         this.fadeIn(targetVolume, durationMs);
       })
       .catch((err) => {
         console.warn(`[AudioController] playAndFadeIn() play() REJECTED for "${this.config.src}":`, err);
-        if (this.destroyed || generation !== this.generation) return;
+        if (this.destroyed) return;
         this.armUnlockListener(() => this.playAndFadeIn(targetVolume, durationMs));
       });
   }
@@ -120,7 +104,6 @@ export class AudioController {
 
   stop(): void {
     console.log('[AudioController] stop() called');
-    this.generation += 1;
     this.disarmUnlockListener();
     if (this.fadeTween) {
       this.fadeTween.kill();
@@ -166,7 +149,6 @@ export class AudioController {
 
   fadeOut(durationMs: number, onComplete?: () => void): void {
     console.log('[AudioController] fadeOut() called, durationMs =', durationMs);
-    this.generation += 1;
     this.disarmUnlockListener();
 
     const audio = this.audio;

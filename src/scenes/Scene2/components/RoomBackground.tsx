@@ -43,7 +43,7 @@ const RoomBackground: React.FC = () => {
     <div ref={wrapperRef} className={styles.roomWrapper}>
       <img
         ref={imgRef}
-        src="/Images/luxury-room-cake.png"
+        src="/images/luxury-room-cake.png"
         alt=""
         className={styles.roomImage}
         draggable={false}

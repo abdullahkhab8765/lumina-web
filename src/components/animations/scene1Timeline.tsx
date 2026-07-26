@@ -22,6 +22,8 @@ export interface Scene1TimelineTargets {
   cinematicText: gsap.TweenTarget;
   /** Fill element of the loading bar, animated 0% -> 100% width. */
   loadingBar: gsap.TweenTarget;
+  /** Outer track/pill element of the loading bar, faded out alongside the cinematic text. */
+  loadingBarTrack: gsap.TweenTarget;
   /** Countdown's root element, whose text content the caller swaps via a callback. */
   countdownNumber: gsap.TweenTarget;
   /** FlashTransition's root element. */
@@ -91,6 +93,7 @@ export function createScene1Timeline(
     blackScreen,
     cinematicText,
     loadingBar,
+    loadingBarTrack,
     countdownNumber,
     flash,
     fireworksLayer,
@@ -107,10 +110,11 @@ export function createScene1Timeline(
 
   if (reducedMotion) {
     gsap.set(
-      [blackScreen, cinematicText, loadingBar, flash, fireworksLayer, title, glowParticles, continueButton],
+      [blackScreen, cinematicText, loadingBar, loadingBarTrack, flash, fireworksLayer, title, glowParticles, continueButton],
       { clearProps: "all" }
     );
     gsap.set(loadingBar, { width: "100%" });
+    gsap.set(loadingBarTrack, { opacity: 0 });
     gsap.set(flash, { opacity: 0 });
     gsap.set([cinematicText, title, glowParticles, fireworksLayer], { opacity: 1 });
     gsap.set(continueButton, { pointerEvents: "auto" });
@@ -149,7 +153,7 @@ export function createScene1Timeline(
     .to(loadingBar, { width: "100%", duration: loadingDuration, ease: DEFAULT_EASE_INOUT }, "loadingBarStart")
     .addLabel("loadingBarComplete")
     .to(
-      cinematicText,
+      [cinematicText, loadingBarTrack],
       { opacity: 0, y: -10, filter: "blur(4px)", duration: 0.5, ease: DEFAULT_EASE_IN },
       `loadingBarStart+=${Math.max(loadingDuration - 0.4, 0)}`
     );

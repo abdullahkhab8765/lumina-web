@@ -20,6 +20,8 @@
   letter-spacing: 0.5em;
   font-size: clamp(1rem, 2.4vw, 1.5rem);
   color: rgba(255, 245, 225, 0.92);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .titleName {
@@ -32,6 +34,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   filter: drop-shadow(0 0 30px rgba(255, 220, 140, 0.55));
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .blessingGroup {
@@ -54,6 +58,8 @@
   font-weight: 300;
   letter-spacing: 0.03em;
   color: rgba(255, 245, 225, 0.94);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .finalMessageGroup {
@@ -76,6 +82,8 @@
   font-weight: 300;
   letter-spacing: 0.04em;
   color: rgba(255, 240, 215, 0.85);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .finalMessageEmphasis {

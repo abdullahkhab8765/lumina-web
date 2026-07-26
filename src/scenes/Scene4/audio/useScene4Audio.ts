@@ -13,13 +13,19 @@ interface UseScene4AudioControls {
 }
 
 function useScene4Audio(isActive: boolean): UseScene4AudioControls {
+  // TEMP DIAGNOSTIC — remove once the break point is found.
+  console.log('[Scene4Audio] useScene4Audio() called, isActive =', isActive);
+
   const controllerRef = useRef<AudioController | null>(null);
 
   useEffect(() => {
+    console.log('[Scene4Audio] mount effect running, isActive =', isActive);
     if (!isActive) {
+      console.log('[Scene4Audio] mount effect bailed: isActive is false');
       return;
     }
 
+    console.log('[Scene4Audio] creating controller + calling playAndFadeIn()');
     const controller = createScene4AudioController();
     controllerRef.current = controller;
 
@@ -29,7 +35,9 @@ function useScene4Audio(isActive: boolean): UseScene4AudioControls {
     );
 
     return () => {
+      console.log('[Scene4Audio] mount effect CLEANUP firing (unmount or isActive changed) -- fading out + destroying');
       controller.fadeOut(SCENE4_AUDIO_CONFIG.fadeOutDuration, () => {
+        console.log('[Scene4Audio] fadeOut complete, calling destroy()');
         controller.destroy();
       });
       controllerRef.current = null;
@@ -39,22 +47,27 @@ function useScene4Audio(isActive: boolean): UseScene4AudioControls {
 
   useEffect(() => {
     return () => {
+      console.log('[Scene4Audio] safety-net cleanup firing (component fully unmounting)');
       controllerRef.current?.destroy();
       controllerRef.current = null;
     };
   }, []);
 
   const setParagraphVolume = useCallback((paragraph: Scene4Paragraph) => {
+    console.log('[Scene4Audio] setParagraphVolume() called with paragraph =', paragraph);
     const controller = controllerRef.current;
     if (!controller) {
+      console.log('[Scene4Audio] setParagraphVolume() bailed: controllerRef.current is null');
       return;
     }
 
     const targetVolume = SCENE4_AUDIO_CONFIG.paragraphVolumes[`paragraph${paragraph}`];
+    console.log('[Scene4Audio] calling fadeIn() with targetVolume =', targetVolume);
     controller.fadeIn(targetVolume, SCENE4_AUDIO_CONFIG.paragraphTransitionDuration);
   }, []);
 
   const fadeOutAndStop = useCallback((onComplete?: () => void) => {
+    console.log('[Scene4Audio] fadeOutAndStop() called explicitly');
     const controller = controllerRef.current;
     if (!controller) {
       onComplete?.();

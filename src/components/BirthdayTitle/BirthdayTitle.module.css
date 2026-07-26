@@ -17,6 +17,9 @@
   font-family: var(--font-body, "Inter", ui-sans-serif, system-ui, sans-serif);
   text-transform: uppercase;
   white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   font-size: clamp(1.9rem, 5vw, 4rem);
   letter-spacing: 0.08em;

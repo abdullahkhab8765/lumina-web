@@ -92,7 +92,8 @@
 
 /* Generic centered content layer used for text/loading/countdown/title stacks */
 .centerStage {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 20;
   display: flex;
   flex-direction: column;

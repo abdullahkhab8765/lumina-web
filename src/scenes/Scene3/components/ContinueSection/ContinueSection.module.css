@@ -2,6 +2,7 @@
   position: absolute;
   left: 50%;
   bottom: 8%;
+  bottom: calc(8% + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
   z-index: 6;
   display: flex;
@@ -35,5 +36,6 @@
 @media (max-width: 640px) {
   .wrapper {
     bottom: 10%;
+    bottom: calc(10% + env(safe-area-inset-bottom, 0px));
   }
 }

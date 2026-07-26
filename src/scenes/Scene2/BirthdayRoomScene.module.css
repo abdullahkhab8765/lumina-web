@@ -36,8 +36,11 @@
 
 .continueWrapper {
   position: absolute;
+  top: auto;
+  right: auto;
   left: 50%;
   bottom: 8%;
+  bottom: calc(8% + env(safe-area-inset-bottom, 0px));
   transform: translateX(-50%);
   z-index: 5;
   display: flex;
@@ -48,12 +51,14 @@
 @media (max-width: 1024px) {
   .continueWrapper {
     bottom: 10%;
+    bottom: calc(10% + env(safe-area-inset-bottom, 0px));
   }
 }
 
 @media (max-width: 640px) {
   .continueWrapper {
     bottom: 12%;
+    bottom: calc(12% + env(safe-area-inset-bottom, 0px));
   }
 }
 
